@@ -41,7 +41,7 @@
 
         </h2>
         <h3>
-            <span>Total</span>
+            <span>Score: </span>
             <span id="totalHit"></span>
         </h3>
         <button onclick="startGame()">Start Game</button>
@@ -51,8 +51,9 @@
         let isGameStart=false;
         let hit = false;
         function startGame(){
+            hitcount=0;
             document.getElementById("gameStaus").innerText="Game Started.";
-            let hitcount=0;
+            document.getElementById("totalHit").innerText =hitcount;
             isGameStart =true;
             let mosquito = document.getElementById("mosquito");
             let time =setInterval(()=>{
@@ -63,6 +64,7 @@
                 mosquito.style.top=j+"px";
             },1500);
             setTimeout(()=>{
+                document.getElementById("gameStaus").innerText="Game Over.";
                 clearTimeout(time);
                 isGameStart =false;
                 hit = false;
@@ -70,7 +72,6 @@
         }
         function hitMosquito(){
             if(isGameStart && hit){
-                document.getElementById("gameStaus").innerText="Game Over.";
                 hit = false;
                 hitcount++;
                 document.getElementById("totalHit").innerText =hitcount;
